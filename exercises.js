@@ -129,8 +129,7 @@ const deepEqual = (a, b) => {
     if (typeof a !== 'object' && typeof b !== 'object') return a === b;
     else {
         if (a === null || b === null) return "null value";
-        let aKeys = Object.keys(a);
-        let bKeys = Object.keys(b);
+        let aKeys = Object.keys(a), bKeys = Object.keys(b);
         if (aKeys.length !== bKeys.length) return false;
         for (let i = 0; i < aKeys.length; i++) {
             if (aKeys[i] !== bKeys[i]) return false;
