@@ -44,7 +44,7 @@ const min = (a, b) => a < b ? a : b;
 
 // Chapter 3, page 59: Recursion
 const isEven = n => {
-    if (isNaN(n) || !Number.isInteger(n)) return 'invalid input';
+    if (!Number.isInteger(n)) return 'invalid input';
     if (!n) return 'even';
     if (n === 1) return 'odd';
     return n > 0 ? isEven(n - 2) : isEven(n + 2);
@@ -75,7 +75,8 @@ const reverseArray = arr => {
     let newArr = [];
     while (arr.length) newArr.push(arr.pop());
     /* 
-    I also considered the below solution in lieu of the while loop as there may be an efficiency advantage. However, I note Mr.Haverbeke's notion that eloquence should trump efficiency until efficiency becomes a problem.
+    I also considered the below solution in lieu of the while loop as there may be an efficiency advantage. 
+    However, I note Mr.Haverbeke's notion that eloquence should trump efficiency until efficiency becomes a problem.
 
     let index = 0;
     for (let i = arr.length - 1; i >= 0; i--) {
@@ -105,8 +106,8 @@ const arrayToList = arr => {
 const listToArray = list => {
     let arr = [list.value];
     while (list.rest) {
-    list = list.rest;
-    arr.push(list.value);
+        list = list.rest;
+        arr.push(list.value);
     }
     return arr;
 }
@@ -133,9 +134,8 @@ const deepEqual = (a, b) => {
         if (aKeys.length !== bKeys.length) return false;
         for (let i = 0; i < aKeys.length; i++) {
             if (aKeys[i] !== bKeys[i]) return false;
-            if (typeof a[aKeys[i]] === 'object' && typeof b[bKeys[i]] === 'object') {
+            if (typeof a[aKeys[i]] === 'object' && typeof b[bKeys[i]] === 'object')
                 return deepEqual(a[aKeys[i]], b[bKeys[i]]);
-            }
             else if (a[aKeys[i]] !== b[bKeys[i]]) return false;
         }
         return true;
